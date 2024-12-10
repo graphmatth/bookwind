@@ -5,6 +5,7 @@ export type Book = {
   ratings_average?: number;
   first_publish_year?: number;
   cover_i: string;
+  subject: string[];
 };
 
 export type BookSearchResponse = {

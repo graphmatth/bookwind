@@ -8,7 +8,7 @@ export const fetchBooks = async (
 
   try {
     const response = await fetch(
-      `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=${limit}`,
+      `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=${limit}&fields=key,title,author_name,subject,first_publish_year,cover_i,ratings_average`,
     );
 
     // Add more detailed error handling
