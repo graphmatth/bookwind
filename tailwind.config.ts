@@ -12,7 +12,12 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      screens: {
+        // phone in landscape
+        custombp: { raw: "(max-height: 650px)" },
+      },
     },
   },
+
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;

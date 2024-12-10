@@ -12,3 +12,75 @@ body {
   background: var(--background);
   font-family: "Geist", Arial, Helvetica, sans-serif;
 }
+
+/*
+  Animation stolen and remix from paco.me
+*/
+
+
+/* TO DO - refact in tailwind css */
+
+[data-animate] {
+  --stagger: 0;
+  --delay: 120ms;
+  --start: 0ms;
+}
+
+[data-animate-img] {
+  --stagger: 0;
+  --delay: 120ms;
+  --start: 0ms;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-animate] {
+    animation: enter-anim 0.8s both;
+    animation-delay: calc(var(--stagger) * var(--delay) + var(--start));
+  }
+
+  [data-animate-img] {
+    animation: enter-img 0.8s both;
+    animation-delay: calc(var(--stagger) * var(--delay) + var(--start));
+  }
+}
+
+@keyframes enter-anim {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(5px)
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0px)
+  }
+}
+
+@keyframes enter-img {
+  0% {
+    opacity: 0;
+    filter: blur(5px)
+  }
+
+  to {
+    opacity: 0.6;
+    filter: blur(0px)
+  }
+}
+
+
+@media (max-width: 1023px) {
+  @keyframes enter-img {
+    0% {
+      opacity: 0;
+      filter: blur(5px)
+    }
+  
+    to {
+      opacity: 1;
+      filter: blur(0px)
+    }
+  }
+}
