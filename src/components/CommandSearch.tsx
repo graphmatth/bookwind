@@ -28,7 +28,7 @@ const CommandSearch = () => {
           <button
             type="button"
             data-animate
-            style={{ "--stagger": 4 }}
+            style={{ "--stagger": 4 } as React.CSSProperties}
             className="flex items-center w-72 text-left space-x-3 px-4 h-12 bg-white ring-1 ring-slate-900/40 hover:ring-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 shadow-sm rounded-lg text-slate-400"
           >
             <svg

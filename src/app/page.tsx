@@ -20,7 +20,7 @@ export default function Home() {
         <Image
           alt="harry potter cover book"
           data-animate-img
-          style={{ "--stagger": 7 }}
+          style={{ "--stagger": 7 } as React.CSSProperties}
           className="custombp:hidden fixed bottom-[-9rem] rotate-[20deg] lg:rotate-[40deg] lg:bottom-0 left-[10%] lg:left-[-3rem] "
           src={harryImg}
           width={200}
@@ -31,7 +31,7 @@ export default function Home() {
           width={200}
           alt="harry potter cover book"
           data-animate-img
-          style={{ "--stagger": 8 }}
+          style={{ "--stagger": 8 } as React.CSSProperties}
         />
         <Image
           className="custombp:hidden fixed hidden lg:block w-[175px] lg:w-[200px] right-[45%] lg:right-[-4rem] bottom-[-5rem] lg:bottom-auto top-auto lg:top-[10vh] rotate-[25deg] lg:rotate-[-25deg] opacity-40"
@@ -39,7 +39,7 @@ export default function Home() {
           width={200}
           alt="harry potter cover book"
           data-animate-img
-          style={{ "--stagger": 9 }}
+          style={{ "--stagger": 9 } as React.CSSProperties}
         />
         <Image
           className="custombp:hidden fixed hidden lg:block left-[-4rem] lg:top-[2rem] rotate-[100deg] opacity-40"
@@ -47,7 +47,7 @@ export default function Home() {
           width={200}
           alt="harry potter cover book"
           data-animate-img
-          style={{ "--stagger": 10 }}
+          style={{ "--stagger": 10 } as React.CSSProperties}
         />
         <div
           className="absolute inset-0 bg-grid-slate-900/[0.04] bg-grid bg-[bottom_1px_center]"
@@ -60,7 +60,7 @@ export default function Home() {
         <div className="relative max-w-4xl mx-auto pt-5 md:pt-20 sm:pt-24 lg:pt-32">
           <h1
             data-animate
-            style={{ "--stagger": 2 }}
+            style={{ "--stagger": 2 } as React.CSSProperties}
             className="text-slate-900 font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center p-1"
           >
             Rapidly <span className="text-sky-500">search books</span> without
@@ -68,7 +68,7 @@ export default function Home() {
           </h1>
           <p
             data-animate
-            style={{ "--stagger": 3 }}
+            style={{ "--stagger": 3 } as React.CSSProperties}
             className="mt-6 text-lg text-slate-600 text-center max-w-3xl mx-auto p-1 text-balance"
           >
             In reality, this is an exercise to join Jump, because I love the
@@ -87,7 +87,7 @@ const Nav = () => {
     <nav
       className="flex justify-between p-5 container mx-auto relative"
       data-animate
-      style={{ "--stagger": 1 }}
+      style={{ "--stagger": 1 as React.CSSProperties }}
     >
       <p className="font-semibold">BookWind</p>
       <a
