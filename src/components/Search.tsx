@@ -15,7 +15,7 @@ export const Search = () => {
         // TO DO - useDebounce hook
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <SearchResult searchQuery={searchQuery} />
+      {searchQuery.length > 0 && <SearchResult searchQuery={searchQuery} />}
     </div>
   );
 };
