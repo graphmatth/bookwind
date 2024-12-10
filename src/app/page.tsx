@@ -87,7 +87,7 @@ const Nav = () => {
     <nav
       className="flex justify-between p-5 container mx-auto relative"
       data-animate
-      style={{ "--stagger": 1 as React.CSSProperties }}
+      style={{ "--stagger": 1 } as React.CSSProperties}
     >
       <p className="font-semibold">BookWind</p>
       <a

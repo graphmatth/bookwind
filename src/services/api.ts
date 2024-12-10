@@ -26,9 +26,11 @@ export const fetchBooks = async (
     const data: BookSearchResponse = await response.json();
     return data.docs;
   } catch (error) {
+    const err = error as Error; // Cast en type Error
+
     // More comprehensive error logging
     console.error("Fetch error details:", {
-      message: error?.message,
+      message: err?.message,
       query: query,
     });
     return [];
