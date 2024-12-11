@@ -16,81 +16,28 @@ body {
 /*
   Animation stolen and remix from paco.me
 */
-
-
-/* TO DO - refact in tailwind css */
-
-[data-animate] {
-  --stagger: 0;
-  --delay: 120ms;
-  --start: 0ms;
-}
-
-[data-animate-img] {
-  --stagger: 0;
-  --delay: 120ms;
-  --start: 0ms;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  [data-animate] {
-    animation: enter-anim 0.8s both;
-    animation-delay: calc(var(--stagger) * var(--delay) + var(--start));
-  }
-
-  [data-animate-img] {
-    animation: enter-img 0.8s both;
-    animation-delay: calc(var(--stagger) * var(--delay) + var(--start));
-  }
-}
-
-@keyframes enter-anim {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-    filter: blur(5px)
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-    filter: blur(0px)
-  }
-}
-
-@keyframes enter-img {
-  0% {
-    opacity: 0;
-    filter: blur(5px)
-  }
-
-  to {
-    opacity: 0.6;
-    filter: blur(0px)
-  }
-}
-
-
-@media (max-width: 1023px) {
-  @keyframes enter-img {
-    0% {
-      opacity: 0;
-      filter: blur(5px)
+@layer utilities {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-animate] {
+      @apply animate-enter-anim;
+      animation-delay: calc(
+        var(--stagger, 0) * var(--delay, 120ms) + var(--start, 0ms)
+      );
     }
-  
-    to {
-      opacity: 1;
-      filter: blur(0px)
+
+    [data-animate-img] {
+      @apply animate-enter-img;
+      animation-delay: calc(
+        var(--stagger, 0) * var(--delay, 120ms) + var(--start, 0ms)
+      );
     }
   }
 }
 
-
-/* The description of books are in markdown so we can't use Tailwind utilies directly */
+/* The description of books are in markdown, so we can't use Tailwind utilies on it */
 .markdown-container a {
   text-decoration: underline;
 }
-
 
 .markdown-container hr {
   margin-top: 2rem;

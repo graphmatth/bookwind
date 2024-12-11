@@ -18,44 +18,80 @@ export default function Home() {
   return (
     <div>
       <QueryClientProvider client={queryClient}>
-        <Link href="/books/OL82548W">
+        <Link
+          href="/books/OL82548W"
+          className="opacity-100 md:opacity-60 hover:opacity-100 transition-opacity"
+        >
           <Image
-            alt="harry potter cover book"
             data-animate-img
-            style={{ "--stagger": 7 } as React.CSSProperties}
-            className="custombp:hidden fixed bottom-[-9rem] rotate-[20deg] lg:rotate-[40deg] lg:bottom-0 left-[10%] lg:left-[-3rem] "
+            style={
+              {
+                "--stagger": 7,
+                animationDelay:
+                  "calc(var(--stagger, 0) * var(--delay, 120ms) + var(--start, 0ms))",
+              } as React.CSSProperties
+            }
+            className="hover:!opacity-100 transition-opacity landscapephone:hidden fixed bottom-[-9rem] rotate-[20deg] lg:rotate-[40deg] lg:bottom-0 left-[10%] lg:left-[-3rem] opacity-100 lg:opacity-60 motion-safe:animate-enter-img-mobile md:motion-safe:animate-enter-img"
             src={harryImg}
+            alt="harry potter cover book"
             width={200}
           />
         </Link>
-        <Link href="/books/OL9821758W">
+        <Link
+          href="/books/OL9821758W"
+          className="opacity-100 md:opacity-60 hover:opacity-100 transition-opacity"
+        >
           <Image
-            className="custombp:hidden fixed w-[150px] lg:w-[200px] right-[10%] lg:right-[-3rem] bottom-[-3rem] lg:bottom-0 rotate-[25deg] lg:rotate-[-55deg] opacity-100 lg:opacity-40"
+            data-animate-img
+            style={
+              {
+                "--stagger": 8,
+                animationDelay:
+                  "calc(var(--stagger, 0) * var(--delay, 120ms) + var(--start, 0ms))",
+              } as React.CSSProperties
+            }
+            className="hover:!opacity-100 transition-opacity  landscapephone:hidden fixed w-[150px] lg:w-[200px] right-[10%] lg:right-[-3rem] bottom-[-3rem] lg:bottom-0 rotate-[25deg] lg:rotate-[-55deg] opacity-100 lg:opacity-60 motion-safe:animate-enter-img-mobile md:motion-safe:animate-enter-img"
             src={joinIn}
             width={200}
             alt="Join In cover book"
-            data-animate-img
-            style={{ "--stagger": 8 } as React.CSSProperties}
           />
         </Link>
-        <Link href="/books/OL20196399W">
+        <Link
+          href="/books/OL20196399W"
+          className="opacity-60 transform hover:opacity-100 transition-opacity"
+        >
           <Image
-            className="custombp:hidden fixed hidden lg:block w-[175px] lg:w-[200px] right-[45%] lg:right-[-4rem] bottom-[-5rem] lg:bottom-auto top-auto lg:top-[10vh] rotate-[25deg] lg:rotate-[-25deg] opacity-40"
+            data-animate-img
+            style={
+              {
+                "--stagger": 9,
+                animationDelay:
+                  "calc(var(--stagger, 0) * var(--delay, 120ms) + var(--start, 0ms))",
+              } as React.CSSProperties
+            }
+            className="hover:!opacity-100 transition-opacity  duration-300 landscapephone:hidden fixed hidden lg:block w-[175px] lg:w-[200px] right-[45%] lg:right-[-4rem] bottom-[-5rem] lg:bottom-auto top-auto lg:top-[10vh] rotate-[25deg] lg:rotate-[-25deg] opacity-40 motion-safe:animate-enter-img-mobile md:motion-safe:animate-enter-img"
             src={jump}
             width={200}
             alt="Jump cover book"
-            data-animate-img
-            style={{ "--stagger": 9 } as React.CSSProperties}
           />
         </Link>
-        <Link href="/books/OL492642W">
+        <Link
+          href="/books/OL492642W"
+          className="opacity-60 transform hover:opacity-100 transition-opacity"
+        >
           <Image
-            className="custombp:hidden fixed hidden lg:block left-[-4rem] lg:top-[2rem] rotate-[100deg] opacity-40"
+            data-animate-img
+            style={
+              {
+                "--stagger": 10,
+                animationDelay:
+                  "calc(var(--stagger, 0) * var(--delay, 120ms) + var(--start, 0ms))",
+              } as React.CSSProperties
+            }
+            className="hover:!opacity-100 landscapephone:hidden fixed hidden lg:block left-[-4rem] lg:top-[2rem] rotate-[100deg] opacity-40 motion-safe:animate-enter-img-mobile md:motion-safe:animate-enter-img"
             src={lastOlympianImg}
             width={200}
             alt="The last olympian cover book"
-            data-animate-img
-            style={{ "--stagger": 10 } as React.CSSProperties}
           />
         </Link>
 
