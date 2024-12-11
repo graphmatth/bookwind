@@ -10,6 +10,7 @@ import lastOlympianImg from "../../public/cover-homepage/the-last-olympian.jpg";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import CommandSearch from "@/components/CommandSearch";
+import Link from "next/link";
 
 const queryClient = new QueryClient();
 
@@ -17,38 +18,46 @@ export default function Home() {
   return (
     <div>
       <QueryClientProvider client={queryClient}>
-        <Image
-          alt="harry potter cover book"
-          data-animate-img
-          style={{ "--stagger": 7 } as React.CSSProperties}
-          className="custombp:hidden fixed bottom-[-9rem] rotate-[20deg] lg:rotate-[40deg] lg:bottom-0 left-[10%] lg:left-[-3rem] "
-          src={harryImg}
-          width={200}
-        />
-        <Image
-          className="custombp:hidden fixed w-[150px] lg:w-[200px] right-[10%] lg:right-[-3rem] bottom-[-3rem] lg:bottom-0 rotate-[25deg] lg:rotate-[-55deg] opacity-100 lg:opacity-40"
-          src={joinIn}
-          width={200}
-          alt="harry potter cover book"
-          data-animate-img
-          style={{ "--stagger": 8 } as React.CSSProperties}
-        />
-        <Image
-          className="custombp:hidden fixed hidden lg:block w-[175px] lg:w-[200px] right-[45%] lg:right-[-4rem] bottom-[-5rem] lg:bottom-auto top-auto lg:top-[10vh] rotate-[25deg] lg:rotate-[-25deg] opacity-40"
-          src={jump}
-          width={200}
-          alt="harry potter cover book"
-          data-animate-img
-          style={{ "--stagger": 9 } as React.CSSProperties}
-        />
-        <Image
-          className="custombp:hidden fixed hidden lg:block left-[-4rem] lg:top-[2rem] rotate-[100deg] opacity-40"
-          src={lastOlympianImg}
-          width={200}
-          alt="harry potter cover book"
-          data-animate-img
-          style={{ "--stagger": 10 } as React.CSSProperties}
-        />
+        <Link href="/books/OL82548W">
+          <Image
+            alt="harry potter cover book"
+            data-animate-img
+            style={{ "--stagger": 7 } as React.CSSProperties}
+            className="custombp:hidden fixed bottom-[-9rem] rotate-[20deg] lg:rotate-[40deg] lg:bottom-0 left-[10%] lg:left-[-3rem] "
+            src={harryImg}
+            width={200}
+          />
+        </Link>
+        <Link href="/books/OL9821758W">
+          <Image
+            className="custombp:hidden fixed w-[150px] lg:w-[200px] right-[10%] lg:right-[-3rem] bottom-[-3rem] lg:bottom-0 rotate-[25deg] lg:rotate-[-55deg] opacity-100 lg:opacity-40"
+            src={joinIn}
+            width={200}
+            alt="Join In cover book"
+            data-animate-img
+            style={{ "--stagger": 8 } as React.CSSProperties}
+          />
+        </Link>
+        <Link href="/books/OL20196399W">
+          <Image
+            className="custombp:hidden fixed hidden lg:block w-[175px] lg:w-[200px] right-[45%] lg:right-[-4rem] bottom-[-5rem] lg:bottom-auto top-auto lg:top-[10vh] rotate-[25deg] lg:rotate-[-25deg] opacity-40"
+            src={jump}
+            width={200}
+            alt="Jump cover book"
+            data-animate-img
+            style={{ "--stagger": 9 } as React.CSSProperties}
+          />
+        </Link>
+        <Link href="/books/OL492642W">
+          <Image
+            className="custombp:hidden fixed hidden lg:block left-[-4rem] lg:top-[2rem] rotate-[100deg] opacity-40"
+            src={lastOlympianImg}
+            width={200}
+            alt="The last olympian cover book"
+            data-animate-img
+            style={{ "--stagger": 10 } as React.CSSProperties}
+          />
+        </Link>
 
         <div className="relative max-w-4xl mx-auto pt-5 md:pt-20 sm:pt-24 lg:pt-32">
           <h1

@@ -84,3 +84,15 @@ body {
     }
   }
 }
+
+
+/* The description of books are in markdown so we can't use Tailwind utilies directly */
+.markdown-container a {
+  text-decoration: underline;
+}
+
+
+.markdown-container hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

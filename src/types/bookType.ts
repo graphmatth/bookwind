@@ -14,3 +14,26 @@ export type BookSearchResponse = {
   numFoundExact: boolean;
   docs: Book[];
 };
+
+export type BookDetails = {
+  description: string | { type: string; value: string };
+  title: string;
+  covers: number[];
+  subject_places?: string[];
+  subjects?: string[];
+  first_publish_year?: string;
+  first_publish_date?: number;
+  subject_people?: string[];
+  key: string;
+  authors?: {
+    author: {
+      key: string;
+    };
+    type: {
+      key: string;
+    };
+  }[];
+  type?: {
+    key: string;
+  };
+};

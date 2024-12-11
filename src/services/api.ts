@@ -1,4 +1,4 @@
-import { Book, BookSearchResponse } from "@/types/bookType";
+import { Book, BookSearchResponse, BookDetails } from "@/types/bookType";
 
 export const fetchBooks = async (
   query: string,
@@ -35,4 +35,14 @@ export const fetchBooks = async (
     });
     return [];
   }
+};
+
+export const fetchBookDetails = async (id: string): Promise<BookDetails> => {
+  const res = await fetch(`https://openlibrary.org/works/${id}.json`);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch book details");
+  }
+
+  return res.json();
 };

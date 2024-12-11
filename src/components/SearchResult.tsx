@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Book } from "@/types/bookType";
+import Link from "next/link";
 
 interface SearchResultsProps {
   results: Book[] | undefined;
@@ -25,8 +26,14 @@ export const SearchResult = ({
   return (
     <div className="flex flex-col gap-3 w-full px-3 pb-3 ">
       {results?.map((book: Book, key: React.Key | null | undefined) => {
+        // the key include "/works/<key>" and we don't want it here
+        const cleanKey = book.key.includes("/")
+          ? book.key.split("/")[2]
+          : book.key;
+
         return (
-          <div
+          <Link
+            href={`/books/${cleanKey}`}
             key={key}
             className="flex gap-1 border border-slate-300 w-100 p-3 border-opacity-30 rounded-md items-center"
           >
@@ -101,7 +108,7 @@ export const SearchResult = ({
                 )}
               </div>
             </div>
-          </div>
+          </Link>
         );
       })}
       {isLoading && (
