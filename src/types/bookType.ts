@@ -17,13 +17,10 @@ export const BookSearchResponseSchema = z.object({
 export type Book = z.infer<typeof BookSchema>;
 export type BookSearchResponse = z.infer<typeof BookSearchResponseSchema>;
 
-const AuthorTypeSchema = z.object({
-  key: z.string(),
-});
-
 const AuthorSchema = z.object({
-  author: AuthorTypeSchema,
-  type: AuthorTypeSchema,
+  author: z.object({
+    key: z.string(),
+  }),
 });
 
 export const BookDetailsSchema = z.object({
