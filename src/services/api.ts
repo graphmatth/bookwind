@@ -1,4 +1,10 @@
-import { Book, BookSearchResponse, BookDetails } from "@/types/bookType";
+import {
+  Book,
+  BookSearchResponse,
+  BookDetails,
+  BookSearchResponseSchema,
+  BookDetailsSchema,
+} from "@/types/bookType";
 
 export const fetchBooks = async (
   query: string,
@@ -24,7 +30,9 @@ export const fetchBooks = async (
     }
 
     const data: BookSearchResponse = await response.json();
-    return data.docs;
+
+    const parsedData = BookSearchResponseSchema.parse(data);
+    return parsedData.docs;
   } catch (error) {
     const err = error as Error; // Cast en type Error
 
@@ -38,11 +46,18 @@ export const fetchBooks = async (
 };
 
 export const fetchBookDetails = async (id: string): Promise<BookDetails> => {
-  const res = await fetch(`https://openlibrary.org/works/${id}.json`);
+  try {
+    const res = await fetch(`https://openlibrary.org/works/${id}.json`);
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch book details");
+    if (!res.ok) {
+      throw new Error("Failed to fetch book details");
+    }
+
+    const data = await res.json();
+    const validatedData = BookDetailsSchema.parse(data);
+    return validatedData;
+  } catch (error) {
+    console.error("Failed to fetch book details:", error);
+    throw error;
   }
-
-  return res.json();
 };

@@ -1,8 +1,13 @@
 import React from "react";
+import { z } from "zod";
 
 interface AuthorNameProps {
   authorKey: string;
 }
+
+const AuthorResponseSchema = z.object({
+  name: z.string().optional(),
+});
 
 export const AuthorName = async ({ authorKey }: AuthorNameProps) => {
   const fetchAuthorName = async () => {
@@ -12,7 +17,10 @@ export const AuthorName = async ({ authorKey }: AuthorNameProps) => {
         throw new Error(`Failed to fetch author: ${response.status}`);
       }
       const data = await response.json();
-      return data.name;
+
+      const parsedData = AuthorResponseSchema.parse(data);
+
+      return parsedData.name || null;
     } catch (error) {
       console.error("Error fetching author:", error);
       return "Unknown Author";

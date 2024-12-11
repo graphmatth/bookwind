@@ -1,39 +1,48 @@
-export type Book = {
-  key: string;
-  title: string;
-  author_name?: string[];
-  ratings_average?: number;
-  first_publish_year?: number;
-  cover_i: string;
-  subject: string[];
-};
+import { z } from "zod";
 
-export type BookSearchResponse = {
-  numFound: number;
-  start: number;
-  numFoundExact: boolean;
-  docs: Book[];
-};
+export const BookSchema = z.object({
+  key: z.string(),
+  title: z.string(),
+  author_name: z.array(z.string()).optional(),
+  ratings_average: z.number().optional(),
+  first_publish_year: z.number().optional(),
+  cover_i: z.number().optional(),
+  subject: z.array(z.string()).optional(),
+});
 
-export type BookDetails = {
-  description: string | { type: string; value: string };
-  title: string;
-  covers: number[];
-  subject_places?: string[];
-  subjects?: string[];
-  first_publish_year?: string;
-  first_publish_date?: number;
-  subject_people?: string[];
-  key: string;
-  authors?: {
-    author: {
-      key: string;
-    };
-    type: {
-      key: string;
-    };
-  }[];
-  type?: {
-    key: string;
-  };
-};
+export const BookSearchResponseSchema = z.object({
+  docs: z.array(BookSchema),
+});
+
+export type Book = z.infer<typeof BookSchema>;
+export type BookSearchResponse = z.infer<typeof BookSearchResponseSchema>;
+
+const AuthorTypeSchema = z.object({
+  key: z.string(),
+});
+
+const AuthorSchema = z.object({
+  author: AuthorTypeSchema,
+  type: AuthorTypeSchema,
+});
+
+export const BookDetailsSchema = z.object({
+  key: z.string(),
+  title: z.string(),
+  first_publish_date: z.string().optional(),
+  first_publish_year: z.string().optional(),
+
+  description: z.union([
+    z.string().optional(),
+    z
+      .object({
+        type: z.string(),
+        value: z.string(),
+      })
+      .optional(),
+  ]),
+  covers: z.array(z.number()).optional(),
+  authors: z.array(AuthorSchema).optional(),
+});
+
+export type BookDetails = z.infer<typeof BookDetailsSchema>;
