@@ -40,17 +40,6 @@ npm run dev
 
 ---
 
-## **Time Spent**
-
-This project took approximately **2 days** to complete. During this time, I focused on:
-
-- Setting up the project architecture.
-- Integrating the **Open Library API** using **TanStack Query** and **React Server Components**.
-- Styling the application with **TailwindCSS**.
-- Handling state management and data validation with **Zod**.
-
----
-
 ## **Planned Evolutions**
 
 1. **Improved Search Functionality**: Add filters and sorting options to refine search results.
@@ -66,17 +55,7 @@ This project took approximately **2 days** to complete. During this time, I focu
 
 ### **Client-Side Rendering (CSR)**
 
-I opted for Client-Side Rendering for the search functionality, particularly for dynamic data like search results, leveraging TanStack Query for efficient data fetching and state management. This decision was influenced by the **TanStack Query** documentation, which highlights challenges, when combining TanStack Query with React **Server Components**.
-
-> \*"Using React Query with Server Components makes most sense if:
->
-> - You have an app using React Query and want to migrate to Server Components without rewriting all the data fetching.
-> - You want a familiar programming paradigm but still want to sprinkle in the benefits of Server Components where it makes most sense.
-> - You have some use case that React Query covers, but that your framework of choice does not cover.
->
-> It's hard to give general advice on when it makes sense to pair React Query with Server Components and not. If you are just starting out with a new Server Components app, we suggest you start out with any tools for data fetching your framework provides you with and avoid bringing in React Query until you actually need it. This might be never, and that's fine, use the right tool for the job!"\*
->
-> **Source**: [TanStack Query - Advanced SSR Guide](https://tanstack.com/query/latest/docs/framework/react/guides/advanced-ssr)
+I opted for Client-Side Rendering for the search functionality, particularly for dynamic data like search results, leveraging TanStack Query for efficient data fetching and state management. This decision was influenced by the **TanStack Query** documentation, which highlights challenges, when combining TanStack Query with **React Server Components**.
 
 ### **Server Components**
 
