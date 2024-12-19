@@ -16,7 +16,7 @@ const ContactPage = () => {
     resolver: zodResolver(contactFormSchema),
   });
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = (data: ContactFormData) => {
     console.log("Form data submitted:", JSON.stringify(data, null, 2));
     reset();
   };
