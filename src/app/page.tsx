@@ -2,9 +2,10 @@
 
 import React from "react";
 import Image from "next/image";
+
 import harryImg from "../../public/cover-homepage/harry-01.jpg";
-import joinIn from "../../public/cover-homepage/join-in.jpg";
-import jump from "../../public/cover-homepage/jump.jpg";
+import sapiens from "../../public/cover-homepage/sapiens.jpg";
+import atomicHabits from "../../public/cover-homepage/atomic-habits.jpg";
 import lastOlympianImg from "../../public/cover-homepage/the-last-olympian.jpg";
 
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -35,7 +36,7 @@ export default function Home() {
           />
         </Link>
         <Link
-          href="/books/OL9821758W"
+          href="/books/OL17075811W"
           className="opacity-100 md:opacity-60 hover:opacity-100 transition-opacity"
         >
           <Image
@@ -45,13 +46,13 @@ export default function Home() {
               } as React.CSSProperties
             }
             className="hover:!opacity-100 transition-opacity  landscapephone:hidden fixed w-[150px] lg:w-[200px] right-[10%] lg:right-[-3rem] bottom-[-3rem] lg:bottom-0 rotate-[25deg] lg:rotate-[-55deg] opacity-100 lg:opacity-60 animate-enter-img-mobile md:animate-enter-img"
-            src={joinIn}
+            src={sapiens}
             width={200}
-            alt="Join In cover book"
+            alt="Sapiens cover book"
           />
         </Link>
         <Link
-          href="/books/OL20196399W"
+          href="/books/OL17930368W"
           className="opacity-60 transform hover:opacity-100 transition-opacity"
         >
           <Image
@@ -61,9 +62,9 @@ export default function Home() {
               } as React.CSSProperties
             }
             className="hover:!opacity-100 transition-opacity  duration-300 landscapephone:hidden fixed hidden lg:block w-[175px] lg:w-[200px] right-[45%] lg:right-[-4rem] bottom-[-5rem] lg:bottom-auto top-auto lg:top-[10vh] rotate-[25deg] lg:rotate-[-25deg] opacity-40 enter-img-mobile md:animate-enter-img"
-            src={jump}
+            src={atomicHabits}
             width={200}
-            alt="Jump cover book"
+            alt="Atomic Habits cover book"
           />
         </Link>
         <Link
@@ -95,8 +96,7 @@ export default function Home() {
             style={{ "--stagger": 3 } as React.CSSProperties}
             className="mt-6 text-lg text-slate-600 text-center max-w-3xl mx-auto p-1 text-balance animate-enter-anim"
           >
-            In reality, this is an exercise to join Jump, because I love the
-            idea of joining Jump.
+            Find books instantly, browse seamlessly
           </p>
           <CommandSearch />
         </div>
