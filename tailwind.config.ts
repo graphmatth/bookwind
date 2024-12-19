@@ -35,9 +35,12 @@ export default {
         },
       },
       animation: {
-        "enter-anim": "enterAnim 0.8s both",
-        "enter-img": "enterImg 0.8s both",
-        "enter-img-mobile": "enterImgMobile 0.8s both",
+        "enter-anim":
+          "enterAnim 0.8s both calc(var(--stagger, 0) * var(--delay, 120ms))",
+        "enter-img":
+          "enterImg 0.8s both calc(var(--stagger, 0) * var(--delay, 120ms))",
+        "enter-img-mobile":
+          "enterImgMobile 0.8s both calc(var(--stagger, 0) * var(--delay, 120ms))",
       },
     },
   },

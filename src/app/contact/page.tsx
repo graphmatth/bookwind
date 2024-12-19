@@ -31,15 +31,13 @@ const ContactPage = () => {
   return (
     <>
       <h1
-        className="text-2xl md:text-6xl font-semibold mb-4 text-center mt-20"
-        data-animate
+        className="text-2xl md:text-6xl font-semibold mb-4 text-center mt-20 animate-enter-anim"
         style={{ "--stagger": 1 } as React.CSSProperties}
       >
         Contact Our Team
       </h1>
       <p
-        className="mt-6 mb-6 text-lg text-slate-600 text-center max-w-3xl mx-auto p-1 text-balance "
-        data-animate
+        className="mt-6 mb-6 text-lg text-slate-600 text-center max-w-3xl mx-auto p-1 text-balance animate-enter-anim"
         style={{ "--stagger": 1 } as React.CSSProperties}
       >
         Got any questions about the product or searching on our platform ?
@@ -47,8 +45,7 @@ const ContactPage = () => {
         in less than 5 minutes.
       </p>
       <div
-        className="max-w-lg mx-auto p-3"
-        data-animate
+        className="max-w-lg mx-auto p-3 animate-enter-anim"
         style={{ "--stagger": 2 } as React.CSSProperties}
       >
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

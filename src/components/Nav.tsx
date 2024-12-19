@@ -4,8 +4,7 @@ import Link from "next/link";
 export const Nav = () => {
   return (
     <nav
-      className="flex justify-between p-5 container mx-auto relative"
-      data-animate
+      className="flex justify-between p-5 container mx-auto relative animate-enter-anim"
       style={{ "--stagger": 1 } as React.CSSProperties}
     >
       <Link href="/" className="font-semibold">

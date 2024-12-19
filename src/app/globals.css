@@ -13,33 +13,14 @@ body {
   font-family: "Geist", Arial, Helvetica, sans-serif;
 }
 
-/*
-  Animation stolen and remix from paco.me
-*/
-@layer utilities {
-  @media (prefers-reduced-motion: no-preference) {
-    [data-animate] {
-      @apply animate-enter-anim;
-      animation-delay: calc(
-        var(--stagger, 0) * var(--delay, 120ms) + var(--start, 0ms)
-      );
-    }
-
-    [data-animate-img] {
-      @apply animate-enter-img;
-      animation-delay: calc(
-        var(--stagger, 0) * var(--delay, 120ms) + var(--start, 0ms)
-      );
-    }
-  }
-}
-
 /* The description of books are in markdown, so we can't use Tailwind utilies on it */
-.markdown-container a {
-  text-decoration: underline;
-}
+.markdown-container {
+  & a {
+    text-decoration: underline;
+  }
 
-.markdown-container hr {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  & hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
 }
