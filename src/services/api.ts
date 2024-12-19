@@ -34,11 +34,9 @@ export const fetchBooks = async (
     const parsedData = BookSearchResponseSchema.parse(data);
     return parsedData.docs;
   } catch (error) {
-    const err = error as Error; // Cast en type Error
-
-    // More comprehensive error logging
     console.error("Fetch error details:", {
-      message: err?.message,
+      message:
+        error instanceof Error ? error.message : "An unknown error occurred",
       query: query,
     });
     return [];

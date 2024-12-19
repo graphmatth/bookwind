@@ -1,15 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import { Book } from "@/types/bookType";
 import Link from "next/link";
-
-interface SearchResultsProps {
-  results: Book[] | undefined;
-  isLoading: boolean;
-  isError: boolean;
-  status: string;
-  error: Error | null;
-}
+import { SearchResultsType } from "@/types/resultsType";
 
 export const SearchResult = ({
   results,
@@ -17,7 +9,7 @@ export const SearchResult = ({
   isError,
   error,
   status,
-}: SearchResultsProps) => {
+}: SearchResultsType) => {
   const errorMessage =
     error instanceof Error ? error.message : "An unknown error occurred";
 
@@ -25,23 +17,31 @@ export const SearchResult = ({
 
   return (
     <div className="flex flex-col gap-3 w-full px-3 pb-3 ">
-      {results?.map((book: Book, key: React.Key | null | undefined) => {
+      {results?.map((book) => {
+        const {
+          key,
+          cover_i,
+          title,
+          author_name,
+          first_publish_year,
+          subject,
+          ratings_average,
+        } = book;
+
         // the key include "/works/<key>" and we don't want it here
-        const cleanKey = book.key.includes("/")
-          ? book.key.split("/")[2]
-          : book.key;
+        const formattedId = book.key.replace("works/", "");
 
         return (
           <Link
-            href={`/books/${cleanKey}`}
+            href={`/books/${formattedId}`}
             key={key}
             className="group flex gap-1 border border-slate-300 w-100 p-3 border-opacity-30 rounded-md items-center hover:shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-50 transition-all hover:-translate-y-px	"
           >
-            {book?.cover_i ? (
+            {cover_i ? (
               <div className="min-w-[80px] p-2">
                 <Image
-                  src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
-                  alt={book.title}
+                  src={`https://covers.openlibrary.org/b/id/${cover_i}-M.jpg`}
+                  alt={title}
                   className="book-cover object-contain shadow-md rounded-sm overflow-hidden"
                   width={80}
                   height={115}
@@ -71,25 +71,23 @@ export const SearchResult = ({
             )}
             <div className="flex flex-col gap-1 py-4">
               <div>
-                <p className="font-bold group-hover:text-white">
-                  {book?.title}
-                </p>
-                {book?.author_name && (
+                <p className="font-bold group-hover:text-white">{title}</p>
+                {author_name && (
                   <p className=" text-gray-500 font-medium group-hover:text-white">
-                    by {book?.author_name[0]}
+                    by {author_name[0]}
                   </p>
                 )}
               </div>
               <div>
                 <div className="flex gap-2">
-                  {book?.first_publish_year && (
+                  {first_publish_year && (
                     <p className="text-slate-500 flex flex-nowrap group-hover:text-white">
-                      Published : {book?.first_publish_year}{" "}
-                      {book?.subject && `| ${book?.subject[0]}`}
+                      Published : {first_publish_year}{" "}
+                      {subject && `| ${subject[0]}`}
                     </p>
                   )}
                 </div>
-                {book?.ratings_average && (
+                {ratings_average && (
                   <div className="text-slate-600 flex gap-1 items-center group-hover:text-white">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +103,7 @@ export const SearchResult = ({
                     >
                       <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
                     </svg>
-                    {book?.ratings_average?.toFixed(1)}
+                    {ratings_average?.toFixed(1)}
                   </div>
                 )}
               </div>

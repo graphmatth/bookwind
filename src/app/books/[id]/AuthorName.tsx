@@ -1,15 +1,12 @@
 import React from "react";
 import { z } from "zod";
-
-interface AuthorNameProps {
-  authorKey: string;
-}
+import { AuthorType } from "@/types/authorType";
 
 const AuthorResponseSchema = z.object({
   name: z.string().optional(),
 });
 
-export const AuthorName = async ({ authorKey }: AuthorNameProps) => {
+export const AuthorName = async ({ authorKey }: AuthorType) => {
   const fetchAuthorName = async () => {
     try {
       const response = await fetch(`https://openlibrary.org${authorKey}.json`);

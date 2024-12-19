@@ -1,6 +1,8 @@
 import React from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
+
+import { BookCoverHomepage } from "@/types/homeType";
 
 import harryImg from "../../public/cover-homepage/harry-01.jpg";
 import sapiens from "../../public/cover-homepage/sapiens.jpg";
@@ -9,16 +11,7 @@ import lastOlympianImg from "../../public/cover-homepage/the-last-olympian.jpg";
 
 import { cn } from "@/utils/cn";
 
-type BookCover = {
-  id?: string;
-  src: string | StaticImageData;
-  alt: string;
-  className?: string;
-  stagger: number;
-  href: string;
-};
-
-const books: BookCover[] = [
+const books: BookCoverHomepage[] = [
   {
     id: "harry-potter",
     href: "/books/OL82548W",
@@ -56,7 +49,13 @@ const books: BookCover[] = [
   },
 ];
 
-const BookCoverLink = ({ src, alt, className, href, stagger }: BookCover) => {
+const BookCoverLink = ({
+  src,
+  alt,
+  className,
+  href,
+  stagger,
+}: BookCoverHomepage) => {
   return (
     <Link
       href={href}

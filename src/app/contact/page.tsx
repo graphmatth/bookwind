@@ -2,16 +2,9 @@
 
 import React from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-const formSchema = z.object({
-  title: z.string().min(1, "Title is required"),
-  email: z.string().email("Invalid email address"),
-  description: z.string().min(10, "Description must be at least 10 characters"),
-});
-
-type FormData = z.infer<typeof formSchema>;
+import { ContactFormData } from "@/types/contactType";
+import { contactFormSchema } from "@/schemas/contactSchema";
 
 const ContactPage = () => {
   const {
@@ -19,8 +12,8 @@ const ContactPage = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormData>({
-    resolver: zodResolver(formSchema),
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
   });
 
   const onSubmit = (data: FormData) => {

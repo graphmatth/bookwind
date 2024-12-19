@@ -8,13 +8,8 @@ export const Search = () => {
 
   const debouncedQuery = useDebounce(searchQuery, 500);
 
-  const {
-    data: results,
-    isLoading,
-    isError,
-    error,
-    status,
-  } = useSearchResults(debouncedQuery);
+  const { data, isLoading, isError, error, status } =
+    useSearchResults(debouncedQuery);
 
   return (
     <div className="flex h-auto flex-col gap-2 items-center">
@@ -30,7 +25,7 @@ export const Search = () => {
 
       {searchQuery?.length > 0 && (
         <SearchResult
-          results={results}
+          results={data}
           isLoading={isLoading}
           isError={isError}
           error={error}
