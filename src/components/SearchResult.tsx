@@ -29,7 +29,7 @@ export const SearchResult = ({
         } = book;
 
         // the key include "/works/<key>" and we don't want it here
-        const formattedId = book.key.replace("works/", "");
+        const formattedId = book.key.replace("/works/", "");
 
         return (
           <Link
