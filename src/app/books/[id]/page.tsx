@@ -49,8 +49,11 @@ export default async function BookPage(props: {
         <h1 className="text-3xl font-bold mb-4">{title}</h1>
         {authors && (
           <div className="text-slate-700">
-            {authors?.map((author, key) => (
-              <AuthorName key={key} authorKey={author.author.key} />
+            {authors?.map((author) => (
+              <AuthorName
+                key={author.author.key}
+                authorKey={author.author.key}
+              />
             ))}
           </div>
         )}
