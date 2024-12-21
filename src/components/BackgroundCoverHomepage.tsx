@@ -63,13 +63,9 @@ const BookCoverLink = ({
         `landscapephone:hidden fixed transition-opacity animate-enter-img-mobile md:animate-enter-img opacity-60 hover:!opacity-100 `,
         className,
       )}
+      style={{ "--stagger": stagger } as React.CSSProperties}
     >
-      <Image
-        style={{ "--stagger": stagger } as React.CSSProperties}
-        src={src}
-        alt={alt}
-        width={200}
-      />
+      <Image src={src} alt={alt} width={200} />
     </Link>
   );
 };
