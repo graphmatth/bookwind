@@ -5,6 +5,8 @@ import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { Search } from "@/components/Search";
 
+import { Command } from "cmdk";
+
 const CommandSearch = () => {
   const [open, setOpen] = useState(false);
 
@@ -22,51 +24,55 @@ const CommandSearch = () => {
   }, []);
 
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen}>
-      <Dialog.Trigger asChild>
-        <div className="mt-6 sm:mt-10 flex justify-center text-sm">
-          <button
-            type="button"
-            style={{ "--stagger": 4 } as React.CSSProperties}
-            className="flex items-center w-72 text-left space-x-3 px-4 h-12 bg-white ring-1 ring-slate-900/40 hover:ring-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 shadow-sm rounded-lg text-slate-400 animate-enter-anim"
+    <>
+      <div className="mt-6 sm:mt-10 flex justify-center text-sm">
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          style={{ "--stagger": 4 } as React.CSSProperties}
+          className="flex items-center w-72 text-left space-x-3 px-4 h-12 bg-white ring-1 ring-slate-900/40 hover:ring-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 shadow-sm rounded-lg text-slate-400 animate-enter-anim"
+        >
+          <svg
+            width="24"
+            height="24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="flex-none text-slate-30"
+            aria-hidden="true"
           >
-            <svg
-              width="24"
-              height="24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="flex-none text-slate-30"
-              aria-hidden="true"
-            >
-              <path d="m19 19-3.5-3.5"></path>
-              <circle cx="11" cy="11" r="6"></circle>
-            </svg>
-            <span className="flex-auto">Search a book...</span>
-            <kbd className="hidden sm:block font-sans font-semibold">
-              <abbr title="Command" className="no-underline text-slate-300">
-                ⌘
-              </abbr>{" "}
-              K
-            </kbd>
-          </button>
-        </div>
-      </Dialog.Trigger>
+            <path d="m19 19-3.5-3.5"></path>
+            <circle cx="11" cy="11" r="6"></circle>
+          </svg>
+          <span className="flex-auto">Search a book...</span>
+          <kbd className="hidden sm:block font-sans font-semibold">
+            <abbr title="Command" className="no-underline text-slate-300">
+              ⌘
+            </abbr>{" "}
+            K
+          </kbd>
+        </button>
+      </div>
+      <Command.Dialog
+        open={open}
+        onOpenChange={setOpen}
+        className="flex h-auto flex-col gap-2 items-center"
+        label="Global Command Menu"
+        shouldFilter={false}
+        overlayClassName="fixed inset-0 z-50 backdrop-blur-[2px] bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
+        contentClassName="fixed rounded-md overflow-auto left-[50%] top-[5%] max-h-[90dvh] z-50 max-w-[90vw] grid w-full md:max-w-2xl translate-x-[-50%] bg-white gap-4 border shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[5%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[10%] sm:rounded-lg"
+      >
+        <div className="px-3 sticky top-0 w-full bg-white">
+          <VisuallyHidden.Root>
+            <Dialog.Title>Search books</Dialog.Title>
+          </VisuallyHidden.Root>
 
-      <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-50 backdrop-blur-[2px] bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
-        <Dialog.Content asChild>
-          <div className="fixed overflow-auto rounded-md left-[50%] top-[5%] max-h-[90dvh] z-50 max-w-[90vw] grid w-full md:max-w-2xl translate-x-[-50%] bg-white gap-4 border shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[5%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[10%] sm:rounded-lg ">
-            <VisuallyHidden.Root>
-              <Dialog.Title>Search books</Dialog.Title>
-            </VisuallyHidden.Root>
-            <Search />
-          </div>
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
+          <Search />
+        </div>
+      </Command.Dialog>
+    </>
   );
 };
 

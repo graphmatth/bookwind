@@ -13,14 +13,17 @@ body {
   font-family: "Geist", Arial, Helvetica, sans-serif;
 }
 
+[cmdk-list-sizer] {
+  @apply h-auto flex flex-col gap-2;
+}
+
 /* The description of books are in markdown, so we can't use Tailwind utilies on it */
 .markdown-container {
   & a {
-    text-decoration: underline;
+    @apply hover:underline;
   }
 
   & hr {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    @apply my-8;
   }
 }
