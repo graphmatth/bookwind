@@ -1,4 +1,5 @@
-import { Book, BookDetails, BookSchema } from "@/types/bookType";
+import { Book, BookDetails } from "@/types/bookType";
+import { BookSchema } from "@/schemas/bookSchema";
 
 import { client } from "./client";
 

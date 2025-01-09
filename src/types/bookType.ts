@@ -1,27 +1,9 @@
 import { z } from "zod";
-
-export const BookSchema = z.object({
-  key: z.string(),
-  title: z.string(),
-  author_name: z.array(z.string()).optional(),
-  ratings_average: z.number().optional(),
-  first_publish_year: z.number().optional(),
-  cover_i: z.number().optional(),
-  subject: z.array(z.string()).optional(),
-});
-
-export const BookSearchResponseSchema = z.object({
-  docs: z.array(BookSchema),
-});
+import { BookSchema, BookSearchResponseSchema } from "@/schemas/bookSchema";
+import { AuthorSchema } from "@/schemas/authorSchema";
 
 export type Book = z.infer<typeof BookSchema>;
 export type BookSearchResponse = z.infer<typeof BookSearchResponseSchema>;
-
-const AuthorSchema = z.object({
-  author: z.object({
-    key: z.string(),
-  }),
-});
 
 export const BookDetailsSchema = z.object({
   key: z.string(),

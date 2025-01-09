@@ -1,5 +1,6 @@
 import { Zodios } from "@zodios/core";
-import { BookSearchResponseSchema, BookDetailsSchema } from "@/types/bookType";
+import { BookDetailsSchema } from "@/types/bookType";
+import { BookSearchResponseSchema } from "@/schemas/bookSchema";
 import { AuthorResponseSchema } from "@/schemas/authorSchema";
 import { z } from "zod";
 
