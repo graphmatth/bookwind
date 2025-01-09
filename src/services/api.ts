@@ -1,14 +1,8 @@
-import {
-  Book,
-  BookSearchResponse,
-  BookDetails,
-  BookSearchResponseSchema,
-  BookDetailsSchema,
-} from "@/types/bookType";
+import { Book, BookDetails, BookSchema } from "@/types/bookType";
 
-import { AuthorResponseSchema } from "@/schemas/authorSchema";
+import { client } from "./client";
 
-const baseUrl: string = "https://openlibrary.org/";
+const fields = Object.keys(BookSchema.shape).join(",");
 
 export const fetchBooks = async (
   query: string,
@@ -17,29 +11,15 @@ export const fetchBooks = async (
   if (!query) return [];
 
   try {
-    const response = await fetch(
-      `${baseUrl}search.json?q=${encodeURIComponent(query)}&limit=${limit}&fields=key,title,author_name,subject,first_publish_year,cover_i,ratings_average`,
-    );
+    const response = await client.getBook({
+      queries: {
+        q: query,
+        limit,
+        fields,
+      },
+    });
 
-    if (!response.ok) {
-      console.error(`HTTP error! status: ${response.status}`);
-
-      const errorBody = await response.text();
-      throw new Error(
-        `Network response was not ok: ${response.status} - ${errorBody}`,
-      );
-    }
-
-    const data: BookSearchResponse = await response.json();
-
-    const parsedData = BookSearchResponseSchema.safeParse(data);
-
-    if (!parsedData.success) {
-      console.error("Validation failed:", parsedData.error);
-      return [];
-    }
-
-    return parsedData.data.docs;
+    return response.docs;
   } catch (error) {
     console.error("Fetch error details:", {
       message:
@@ -52,21 +32,13 @@ export const fetchBooks = async (
 
 export const fetchBookDetails = async (id: string): Promise<BookDetails> => {
   try {
-    const res = await fetch(`${baseUrl}works/${id}.json`);
+    const response = await client.getBookDetails({
+      params: {
+        olid: id,
+      },
+    });
 
-    if (!res.ok) {
-      throw new Error("Failed to fetch book details");
-    }
-
-    const data = await res.json();
-    const validatedData = BookDetailsSchema.safeParse(data);
-
-    if (!validatedData.success) {
-      console.error("Validation failed:", validatedData.error);
-      throw new Error("Invalid book details data");
-    }
-
-    return validatedData.data;
+    return response;
   } catch (error) {
     console.error("Failed to fetch book details:", error);
     throw error;
@@ -75,21 +47,13 @@ export const fetchBookDetails = async (id: string): Promise<BookDetails> => {
 
 export const fetchAuthorName = async (authorKey: string) => {
   try {
-    const response = await fetch(`${baseUrl}${authorKey}.json`);
+    const response = await client.getAuthorDetails({
+      params: {
+        olid: authorKey,
+      },
+    });
 
-    if (!response.ok) {
-      throw new Error(`Failed to fetch author: ${response.status}`);
-    }
-    const data = await response.json();
-
-    const parsedData = AuthorResponseSchema.safeParse(data);
-
-    if (!parsedData.success) {
-      console.error("Validation failed:", parsedData.error);
-      return "Unknown Author";
-    }
-
-    return parsedData.data.name || "Unknow Author";
+    return response.name;
   } catch (error) {
     console.error("Error fetching author:", error);
     return "Unknown Author";
