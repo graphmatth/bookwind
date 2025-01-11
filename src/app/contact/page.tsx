@@ -5,6 +5,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ContactFormData } from "@/types/contactType";
 import { contactFormSchema } from "@/schemas/contactSchema";
+import { Input } from "@/components/ui/Input";
+import { Label } from "@/components/ui//Label";
+import { Textarea } from "@/components/ui/Textarea";
 
 const ContactPage = () => {
   const {
@@ -33,9 +36,9 @@ const ContactPage = () => {
         className="mt-6 mb-6 text-lg text-slate-600 text-center max-w-3xl mx-auto p-1 text-balance animate-enter-anim"
         style={{ "--stagger": 1 } as React.CSSProperties}
       >
-        Got any questions about the product or searching on our platform ?
-        We&apos;re here top help. Chat out friendly team 27/7 and get an answer
-        in less than 5 minutes.
+        Got any questions about the product or searching on our platform ?{" "}
+        <br />
+        We&apos;re here top help.
       </p>
       <div
         className="max-w-lg mx-auto p-3 animate-enter-anim"
@@ -43,17 +46,14 @@ const ContactPage = () => {
       >
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label
-              htmlFor="title"
-              className="block text-sm font-medium text-gray-700 mb-15"
-            >
-              Title
-            </label>
-            <input
+            <Label htmlFor="title">Title</Label>
+            <Input
               id="title"
               type="text"
+              placeholder="Your title"
               {...register("title")}
-              className={`*:h-10 p-2 rounded-md border w-full ${errors.title ? "border-red-500" : "border-gray-400"}`}
+              className="w-full"
+              variant={errors.title ? "error" : "default"}
             />
             {errors.title && (
               <p className="text-red-500 text-sm">{errors.title.message}</p>
@@ -61,17 +61,14 @@ const ContactPage = () => {
           </div>
 
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700 mb-15"
-            >
-              Email
-            </label>
-            <input
+            <Label htmlFor="email">Email</Label>
+            <Input
               id="email"
               type="email"
+              placeholder="john.doe@gmail.com"
               {...register("email")}
-              className={`h-10 p-2 rounded-md border w-full ${errors.email ? "border-red-500" : "border-gray-400"}`}
+              className="w-full"
+              variant={errors.title ? "error" : "default"}
             />
             {errors.email && (
               <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -79,17 +76,18 @@ const ContactPage = () => {
           </div>
 
           <div>
-            <label
+            <Label
               htmlFor="description"
               className="block text-sm font-medium text-gray-700 mb-15"
             >
               Description
-            </label>
-            <textarea
+            </Label>
+            <Textarea
               id="description"
               {...register("description")}
-              rows={4}
-              className={`min-h-20 p-2 rounded-md border  w-full ${errors.description ? "border-red-500" : "border-gray-400"}`}
+              placeholder="Describe your request"
+              className="w-full"
+              variant={errors.description ? "error" : "default"}
             />
             {errors.description && (
               <p className="text-red-500 text-sm">

@@ -3,6 +3,7 @@ import { useDebounce } from "@/hooks/useDebounce";
 import { SearchResult } from "@/components/SearchResult";
 import { useSearchResults } from "@/hooks/useSearchResults";
 import { Command } from "cmdk";
+import { Input } from "@/components/ui/Input";
 
 export const Search = () => {
   const [searchQuery, setSearchQuery] = React.useState("");
@@ -17,10 +18,13 @@ export const Search = () => {
       <div className="p-3 top-0 w-full bg-white">
         <Command.Input
           value={searchQuery}
-          placeholder="Search a book..."
-          className="w-full h-10 p-2 rounded-md border border-blue-950 sticky top-0"
+          placeholder="Harry Potter, The Lord of the Rings"
+          className="w-full sticky top-0"
           onValueChange={setSearchQuery}
-        />
+          asChild
+        >
+          <Input />
+        </Command.Input>
       </div>
       {debouncedQuery.length > 0 && (
         <SearchResult
