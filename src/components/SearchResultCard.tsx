@@ -2,6 +2,7 @@ import React from "react";
 import { Book } from "@/types/bookType";
 import { Command } from "cmdk";
 import Image from "next/image";
+import { LuBookText, LuStar } from "react-icons/lu";
 
 type SearchResultCardType = {
   book: Book;
@@ -43,22 +44,12 @@ export const SearchResultCard = ({
       ) : (
         <div className="p-2 ">
           <div className="min-w-[80px] bg-slate-100 min-h-32 rounded-sm flex items-center justify-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
+            <LuBookText
+              color="currentColor"
+              strokeWidth={2}
+              size={24}
               className="text-gray-70"
-              strokeLinejoin="round"
-            >
-              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
-              <path d="M8 11h8" />
-              <path d="M8 7h6" />
-            </svg>
+            />
           </div>
         </div>
       )}
@@ -82,21 +73,14 @@ export const SearchResultCard = ({
             )}
           </div>
           {ratings_average && (
-            <div className="text-slate-600 flex gap-1 items-center group-hover:text-white group-data-[selected=true]:text-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
+            <div className="flex gap-1 items-center group-hover:text-white group-data-[selected=true]:text-white text-sky-500">
+              <LuStar
+                strokeWidth={2}
+                size={18}
+                color="currentColor"
                 fill="currentColor"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                className="text-sky-500 group-hover:text-white group-data-[selected=true]:text-white"
-                strokeLinejoin="round"
-              >
-                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-              </svg>
+                className="group-hover:text-white group-data-[selected=true]:text-white"
+              />
               {ratings_average?.toFixed(1)}
             </div>
           )}

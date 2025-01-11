@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { Search } from "@/components/Search";
+import { LuSearch } from "react-icons/lu";
 
 import { Command } from "cmdk";
 
@@ -32,20 +33,12 @@ const CommandSearch = () => {
           style={{ "--stagger": 4 } as React.CSSProperties}
           className="flex items-center w-72 text-left space-x-3 px-4 h-12 bg-white ring-1 ring-slate-900/40 hover:ring-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 shadow-sm rounded-lg text-slate-400 animate-enter-anim"
         >
-          <svg
-            width="24"
-            height="24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="flex-none text-slate-30"
-            aria-hidden="true"
-          >
-            <path d="m19 19-3.5-3.5"></path>
-            <circle cx="11" cy="11" r="6"></circle>
-          </svg>
+          <LuSearch
+            color="currentColor"
+            className="text-slate-30"
+            strokeWidth={2.5}
+            size={20}
+          />
           <span className="flex-auto">Search a book...</span>
           <kbd className="hidden sm:block font-sans font-semibold">
             <abbr title="Command" className="no-underline text-slate-300">
