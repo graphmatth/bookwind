@@ -26,19 +26,13 @@ export const SearchResult = ({
 
   return (
     <Command.List className="flex flex-col gap-3 w-full px-3 pb-3 max-h-[80vh] overflow-auto">
-      {results?.map((book) => {
-        const { key } = book;
-        const cleanKey = key.replace("/works/", "");
-
-        return (
-          <SearchResultCard
-            key={cleanKey}
-            book={book}
-            cleanKey={cleanKey}
-            onSelect={() => router.push(`/books/${cleanKey}`)}
-          />
-        );
-      })}
+      {results?.map((book) => (
+        <SearchResultCard
+          key={book.key}
+          book={book}
+          onSelect={() => router.push(`/books/${book.key}`)}
+        />
+      ))}
     </Command.List>
   );
 };

@@ -6,15 +6,10 @@ import { LuBookText, LuStar } from "react-icons/lu";
 
 type SearchResultCardType = {
   book: Book;
-  cleanKey: string;
   onSelect: () => void;
 };
 
-export const SearchResultCard = ({
-  book,
-  cleanKey,
-  onSelect,
-}: SearchResultCardType) => {
+export const SearchResultCard = ({ book, onSelect }: SearchResultCardType) => {
   const {
     cover_i,
     title,
@@ -22,14 +17,15 @@ export const SearchResultCard = ({
     first_publish_year,
     subject,
     ratings_average,
+    key,
   } = book;
 
   return (
     <Command.Item
-      key={cleanKey}
+      key={key}
       value={title}
       onSelect={onSelect}
-      className="group flex gap-1 border border-slate-300 w-100 p-3 border-opacity-30 rounded-md items-center hover:shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-50 data-[selected=true]:ring-sky-50 data-[selected=true]:bg-sky-500 transition-all"
+      className="group flex gap-1 border border-slate-300 w-100 p-3 border-opacity-30 rounded-md items-center hover:shadow-lg space-y-3 hover:bg-sky-500 hover:cursor-pointer hover:ring-sky-50 data-[selected=true]:ring-sky-50 data-[selected=true]:bg-sky-500 transition-all"
     >
       {cover_i ? (
         <div className="min-w-[80px] p-2">

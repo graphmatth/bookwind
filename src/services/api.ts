@@ -20,7 +20,10 @@ export const fetchBooks = async (
       },
     });
 
-    return response.docs;
+    return response.docs.map((book) => ({
+      ...book,
+      key: book.key.replace("/works/", ""),
+    }));
   } catch (error) {
     console.error("Fetch error details:", {
       message:
