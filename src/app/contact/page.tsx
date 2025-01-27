@@ -78,7 +78,7 @@ const ContactPage = () => {
           <div>
             <Label
               htmlFor="description"
-              className="block text-sm font-medium text-gray-700 mb-15"
+              className="block text-sm font-medium text-gray-700"
             >
               Description
             </Label>

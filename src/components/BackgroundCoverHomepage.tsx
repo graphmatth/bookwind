@@ -60,7 +60,7 @@ const BookCoverLink = ({
     <Link
       href={href}
       className={cn(
-        `landscapephone:hidden fixed transition-opacity animate-enter-img-mobile md:animate-enter-img opacity-60 hover:!opacity-100 `,
+        `landscapephone:hidden fixed transition-opacity animate-enter-img-mobile md:animate-enter-img opacity-60 hover:opacity-100! `,
         className,
       )}
       style={{ "--stagger": stagger } as React.CSSProperties}

@@ -25,21 +25,21 @@ export const SearchResultCard = ({ book, onSelect }: SearchResultCardType) => {
       key={key}
       value={title}
       onSelect={onSelect}
-      className="group flex gap-1 border border-slate-300 w-100 p-3 border-opacity-30 rounded-md items-center hover:shadow-lg space-y-3 hover:bg-sky-500 hover:cursor-pointer hover:ring-sky-50 data-[selected=true]:ring-sky-50 data-[selected=true]:bg-sky-500 transition-all"
+      className="group flex w-full gap-1 border border-slate-300 p-3 border-opacity-30 rounded-md items-center hover:shadow-lg space-y-3 hover:bg-sky-500 hover:cursor-pointer hover:ring-sky-50 data-[selected=true]:ring-sky-50 data-[selected=true]:bg-sky-500 transition-all"
     >
       {cover_i ? (
         <div className="min-w-[80px] p-2">
           <Image
             src={`https://covers.openlibrary.org/b/id/${cover_i}-M.jpg`}
             alt={title}
-            className="object-contain shadow-md rounded-sm overflow-hidden"
+            className="object-contain shadow-md rounded-xs overflow-hidden"
             width={80}
             height={115}
           />
         </div>
       ) : (
         <div className="p-2 ">
-          <div className="min-w-[80px] bg-slate-100 min-h-32 rounded-sm flex items-center justify-center">
+          <div className="min-w-[80px] bg-slate-100 min-h-32 rounded-xs flex items-center justify-center">
             <LuBookText
               color="currentColor"
               strokeWidth={2}
@@ -89,13 +89,13 @@ export const SearchResultCard = ({ book, onSelect }: SearchResultCardType) => {
 export const SearchResultCardLoading = () => {
   return (
     <Command.Loading className="w-full px-3 mb-3">
-      <div className="animate-pulse min-h-[100px] bg-slate-100 bg-muted flex gap-2 border border-slate-500 w-100 p-3 border-opacity-30 rounded-md">
+      <div className="animate-pulse w-full min-h-[100px] bg-slate-100 bg-muted flex gap-2 border border-slate-500 p-3 border-opacity-30 rounded-md">
         <div className="bg-muted animate-pulse min-w-[80px] bg-slate-200 min-h-32 rounded-md" />
         <div className="flex flex-col gap-1 w-full">
-          <div className="bg-muted w-[150px]  animate-pulse font-bold bg-slate-200 rounded-sm h-4" />
-          <div className="bg-muted w-[full] animate-pulse slate-300 bg-slate-200 rounded-sm h-4" />
-          <div className="bg-muted w-[full] animate-pulse slate-300 bg-slate-200 rounded-sm h-4" />
-          <div className="bg-muted w-[full] animate-pulse slate-300 bg-slate-200 rounded-sm h-4" />
+          <div className="bg-muted w-[150px]  animate-pulse font-bold bg-slate-200 rounded-xs h-4" />
+          <div className="bg-muted w-[full] animate-pulse slate-300 bg-slate-200 rounded-xs h-4" />
+          <div className="bg-muted w-[full] animate-pulse slate-300 bg-slate-200 rounded-xs h-4" />
+          <div className="bg-muted w-[full] animate-pulse slate-300 bg-slate-200 rounded-xs h-4" />
         </div>
       </div>
     </Command.Loading>
