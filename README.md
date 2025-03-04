@@ -3,7 +3,10 @@
 ## Description
 
 
-https://github.com/user-attachments/assets/0a4da19d-51ff-440f-91f8-1efb072407ed
+
+https://github.com/user-attachments/assets/345afe98-b4cf-4412-9dfc-807116da70f2
+
+
 
 
 A simple application to search for books and view their details, leveraging the [Open Library API](https://openlibrary.org/developers/api).
