@@ -16,6 +16,7 @@ A simple application to search for books and view their details, leveraging the 
 - TailwindCSS
 - React Hook Form
 - Zod for type validation
+- Zodios
 
 ## Installation
 
