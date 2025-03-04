@@ -2,6 +2,10 @@
 
 ## Description
 
+
+https://github.com/user-attachments/assets/0a4da19d-51ff-440f-91f8-1efb072407ed
+
+
 A simple application to search for books and view their details, leveraging the [Open Library API](https://openlibrary.org/developers/api).
 
 ## Technologies Used
